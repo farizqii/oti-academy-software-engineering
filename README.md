@@ -74,5 +74,5 @@ https://oti-academy-software-engineering-mu.vercel.app/
 
 ## Author
 
-Nama: Adyan Damar Farizqi
-Asal Universitas: Universitas Jenderal Soedirman
+- Nama: Adyan Damar Farizqi.
+- Asal Universitas: Universitas Jenderal Soedirman
