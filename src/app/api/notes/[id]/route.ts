@@ -1,6 +1,9 @@
+import { auth } from "@clerk/nextjs/server";
+
 import { NextResponse } from "next/server";
 
 import { prisma } from "@/lib/prisma";
+
 import { readJsonObject, validateUpdateNote } from "@/lib/note-validation";
 
 type RouteContext = {
@@ -9,15 +12,37 @@ type RouteContext = {
   }>;
 };
 
+function unauthorizedResponse() {
+  return NextResponse.json(
+    {
+      message: "Kamu harus login terlebih dahulu.",
+    },
+    {
+      status: 401,
+    },
+  );
+}
+
+async function findOwnedNote(id: string, userId: string) {
+  return prisma.note.findFirst({
+    where: {
+      id,
+      userId,
+    },
+  });
+}
+
 export async function GET(_request: Request, { params }: RouteContext) {
   try {
+    const { userId } = await auth();
+
+    if (!userId) {
+      return unauthorizedResponse();
+    }
+
     const { id } = await params;
 
-    const note = await prisma.note.findUnique({
-      where: {
-        id,
-      },
-    });
+    const note = await findOwnedNote(id, userId);
 
     if (!note) {
       return NextResponse.json(
@@ -40,7 +65,7 @@ export async function GET(_request: Request, { params }: RouteContext) {
       },
     );
   } catch (error) {
-    console.error("Gagal mengambil detail note:", error);
+    console.error("Gagal mengambil note:", error);
 
     return NextResponse.json(
       {
@@ -55,6 +80,12 @@ export async function GET(_request: Request, { params }: RouteContext) {
 
 export async function PATCH(request: Request, { params }: RouteContext) {
   try {
+    const { userId } = await auth();
+
+    if (!userId) {
+      return unauthorizedResponse();
+    }
+
     const { id } = await params;
 
     const parsedBody = await readJsonObject(request);
@@ -83,11 +114,7 @@ export async function PATCH(request: Request, { params }: RouteContext) {
       );
     }
 
-    const existingNote = await prisma.note.findUnique({
-      where: {
-        id,
-      },
-    });
+    const existingNote = await findOwnedNote(id, userId);
 
     if (!existingNote) {
       return NextResponse.json(
@@ -102,7 +129,7 @@ export async function PATCH(request: Request, { params }: RouteContext) {
 
     const updatedNote = await prisma.note.update({
       where: {
-        id,
+        id: existingNote.id,
       },
 
       data: validatedInput.data,
@@ -133,13 +160,15 @@ export async function PATCH(request: Request, { params }: RouteContext) {
 
 export async function DELETE(_request: Request, { params }: RouteContext) {
   try {
+    const { userId } = await auth();
+
+    if (!userId) {
+      return unauthorizedResponse();
+    }
+
     const { id } = await params;
 
-    const existingNote = await prisma.note.findUnique({
-      where: {
-        id,
-      },
-    });
+    const existingNote = await findOwnedNote(id, userId);
 
     if (!existingNote) {
       return NextResponse.json(
@@ -154,7 +183,7 @@ export async function DELETE(_request: Request, { params }: RouteContext) {
 
     const deletedNote = await prisma.note.delete({
       where: {
-        id,
+        id: existingNote.id,
       },
     });
 

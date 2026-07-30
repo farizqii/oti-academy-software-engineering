@@ -1,11 +1,35 @@
+import { auth } from "@clerk/nextjs/server";
+
 import { NextResponse } from "next/server";
 
 import { prisma } from "@/lib/prisma";
+
 import { readJsonObject, validateCreateNote } from "@/lib/note-validation";
+
+function unauthorizedResponse() {
+  return NextResponse.json(
+    {
+      message: "Kamu harus login terlebih dahulu.",
+    },
+    {
+      status: 401,
+    },
+  );
+}
 
 export async function GET() {
   try {
+    const { userId } = await auth();
+
+    if (!userId) {
+      return unauthorizedResponse();
+    }
+
     const notes = await prisma.note.findMany({
+      where: {
+        userId,
+      },
+
       orderBy: {
         createdAt: "desc",
       },
@@ -36,6 +60,12 @@ export async function GET() {
 
 export async function POST(request: Request) {
   try {
+    const { userId } = await auth();
+
+    if (!userId) {
+      return unauthorizedResponse();
+    }
+
     const parsedBody = await readJsonObject(request);
 
     if (!parsedBody.ok) {
@@ -67,6 +97,8 @@ export async function POST(request: Request) {
         title: validatedInput.data.title,
 
         content: validatedInput.data.content,
+
+        userId,
       },
     });
 

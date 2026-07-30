@@ -1,52 +1,35 @@
+import { auth } from "@clerk/nextjs/server";
 
-export default function DashboardPage(){
-    return(
-        <main className="min-h-screen bg-slate-50">
-            <section className="mx-auto max-w-5xl px-4 py-8">
-                <h1 className="text-2xl font-bold text-slate-900">
-                    Dashboard
-                </h1>
+import { prisma } from "@/lib/prisma";
 
-                <p className="mt-2 text-slate-600">
-                    Ringkasan aktivitas produktivitas kamu akan tampil
-                    di sini.
-                </p>
+export default async function DashboardPage() {
+  const { userId, redirectToSignIn } = await auth();
 
-                <div className="mt-6 grid gap-4 md:grid-cols-3">
-                    <div className="rounded-xl border border-slate-200 bg-white p-4 shadow-sm">
-                        <p className="text-sm text-slate-500">
-                            Total Notes
-                        </p>
+  if (!userId) {
+    return redirectToSignIn();
+  }
 
-                        <p className="mt-2 text-3xl font-bold text-slate-900">
-                            0
-                        </p>
-                    </div>
+  const totalNotes = await prisma.note.count({
+    where: {
+      userId,
+    },
+  });
 
-                    <div className="rounded-xl border border-slate-200 bg-white p-4 shadow-sm">
-                        <p className="text-sm text-slate-500">
-                            Tasks Done
-                        </p>
+  return (
+    <main className="min-h-screen bg-slate-50">
+      <section className="mx-auto max-w-5xl px-4 py-10">
+        <p className="text-sm font-semibold text-blue-700">
+          Personal Dashboard
+        </p>
 
-                        <p className="mt-2 text-3xl font-bold text-slate-900">
-                            0
-                        </p>
-                    </div>
+        <h1 className="mt-2 text-3xl font-bold text-slate-950">Dashboard</h1>
 
-                    <div className="rounded-xl border border-slate-200 bg-white p-4 shadow-sm">
-                        <p className="text-sm text-slate-500">
-                            Pending Tasks
-                        </p>
+        <div className="mt-8 rounded-2xl border border-slate-200 bg-white p-6 shadow-sm">
+          <p className="text-sm text-slate-500">Total Notes</p>
 
-                        <p className="mt-2 text-3xl font-bold text-slate-900">
-                            0
-                        </p>
-                    </div>
-                </div>
-            </section>
-        </main>
-    );
+          <p className="mt-3 text-4xl font-bold text-slate-950">{totalNotes}</p>
+        </div>
+      </section>
+    </main>
+  );
 }
-
-
-
