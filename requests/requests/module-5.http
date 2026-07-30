@@ -1,0 +1,46 @@
+@baseUrl = http://localhost:3000
+@noteId = GANTI_DENGAN_ID_NOTE
+
+### GET all notes
+GET {{baseUrl}}/api/notes
+
+### POST valid note
+POST {{baseUrl}}/api/notes
+Content-Type: application/json
+
+{
+  "title": "Belajar Full-Stack CRUD",
+  "content": "Data disimpan melalui Prisma."
+}
+
+### POST invalid note
+POST {{baseUrl}}/api/notes
+Content-Type: application/json
+
+{
+  "title": "   "
+}
+
+### GET note by ID
+GET {{baseUrl}}/api/notes/{{noteId}}
+
+### PATCH note
+PATCH {{baseUrl}}/api/notes/{{noteId}}
+Content-Type: application/json
+
+{
+  "title": "Belajar Update Note"
+}
+
+### PATCH empty body
+PATCH {{baseUrl}}/api/notes/{{noteId}}
+Content-Type: application/json
+
+{}
+
+### DELETE note
+DELETE {{baseUrl}}/api/notes/{{noteId}}
+
+### GET deleted note
+GET {{baseUrl}}/api/notes/{{noteId}}
+
