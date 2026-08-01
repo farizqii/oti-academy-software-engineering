@@ -15,6 +15,10 @@ const navigation = [
     href: "/notes",
     label: "Notes",
   },
+  {
+    href: "/to-do-list",
+    label: "To-do List",
+  },
 ];
 
 export function Navbar() {

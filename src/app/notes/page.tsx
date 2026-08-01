@@ -1,7 +1,5 @@
 import { auth } from "@clerk/nextjs/server";
-
 import type { Metadata } from "next";
-
 import { NotesClient } from "@/components/notes/NotesClient";
 
 export const metadata: Metadata = {

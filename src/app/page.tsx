@@ -1,4 +1,3 @@
-
 import Link from "next/link";
 
 export default function HomePage() {
@@ -15,8 +14,8 @@ export default function HomePage() {
           </h1>
 
           <p className="mt-4 text-slate-600">
-            Belajar membangun aplikasi web modern dari UI,
-            API, database, authentication, hingga deployment.
+            Belajar membangun aplikasi web modern dari UI, API, database,
+            authentication, hingga deployment.
           </p>
 
           <div className="mt-8 flex flex-wrap gap-3">
@@ -33,11 +32,16 @@ export default function HomePage() {
             >
               View Notes
             </Link>
+
+            <Link
+              href="/to-do-list"
+              className="rounded-xl border border-slate-300 bg-white px-4 py-2 text-slate-900"
+            >
+              View To-do List
+            </Link>
           </div>
         </div>
       </section>
     </main>
   );
 }
-
-
