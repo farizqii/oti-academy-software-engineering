@@ -68,9 +68,11 @@ https://oti-academy-software-engineering-mu.vercel.app/
 
 ## Screenshots
 
-[Tambahkan screenshot aplikasi]
+<img width="1904" height="948" alt="image" src="https://github.com/user-attachments/assets/0d449b2f-0035-4882-9304-a60684a5baba" />
+<img width="1905" height="946" alt="image" src="https://github.com/user-attachments/assets/cd328d99-34d7-48c6-9932-442fc2fa0406" />
+<img width="1907" height="949" alt="image" src="https://github.com/user-attachments/assets/21ca77ef-be32-45b1-9f6c-49d0150fc42f" />
 
 ## Author
 
-Nama: Adyan Damar Farizqi
-Asal Universitas: Universitas Jenderal Soedirman
+- Nama: Adyan Damar Farizqi.
+- Asal Universitas: Universitas Jenderal Soedirman
