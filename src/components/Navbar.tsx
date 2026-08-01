@@ -23,7 +23,7 @@ const navigation = [
 
 export function Navbar() {
   return (
-    <nav className="border-b border-slate-200 bg-white">
+    <nav className="border-b border-slate-200 bg-white shadow">
       <div className="mx-auto flex max-w-5xl flex-col gap-4 px-4 py-4 sm:flex-row sm:items-center sm:justify-between">
         <Link className="text-lg font-bold text-slate-950" href="/">
           OmahTI Academy Final Project
