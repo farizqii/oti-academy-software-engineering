@@ -44,7 +44,7 @@ export function TodoItem({
         onClick={() => onDelete(todo.id)}
         type="button"
       >
-        {isDeleting ? "..." : "Hapus"}
+        {isDeleting ? "..." : "Delete"}
       </button>
     </li>
   );

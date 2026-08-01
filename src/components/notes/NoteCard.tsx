@@ -29,7 +29,7 @@ export function NoteCard({
       <div className="flex items-start justify-between gap-4">
         <div>
           <p className="text-xs font-bold tracking-wide text-blue-700 uppercase">
-            Note
+            Commission
           </p>
 
           <h2 className="mt-2 text-lg font-semibold text-slate-950">
@@ -43,11 +43,11 @@ export function NoteCard({
       </div>
 
       <p className="mt-4 whitespace-pre-wrap text-sm leading-6 text-slate-600">
-        {note.content || "Tidak ada isi."}
+        {note.content || "No Content."}
       </p>
 
       <p className="mt-5 text-xs text-slate-400">
-        Diperbarui {formatDate(note.updatedAt)}
+        Updated {formatDate(note.updatedAt)}
       </p>
 
       <div className="mt-5 flex flex-wrap gap-3">
@@ -65,7 +65,7 @@ export function NoteCard({
           onClick={() => onDelete(note.id)}
           type="button"
         >
-          {isDeleting ? "Menghapus..." : "Hapus"}
+          {isDeleting ? "Deleting..." : "Delete"}
         </button>
       </div>
     </article>

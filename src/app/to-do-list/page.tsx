@@ -14,7 +14,7 @@ export default async function TodosPage() {
         <p className="text-sm font-semibold text-blue-700">User-Owned Data</p>
         <h1 className="mt-2 text-3xl font-bold text-slate-950">To-Do List</h1>
         <p className="mt-2 text-slate-600">
-          Setiap user hanya dapat mengakses to-do miliknya.
+          Each user can only access their own to-do items.
         </p>
         <TodosClient />
       </section>

@@ -22,7 +22,7 @@ export function TodoForm({
     setClientError(null);
 
     if (!title.trim()) {
-      setClientError("Judul tidak boleh kosong.");
+      setClientError("The title cannot be empty.");
       return;
     }
 
@@ -39,7 +39,7 @@ export function TodoForm({
         disabled={isSubmitting}
         maxLength={200}
         onChange={(event) => setTitle(event.target.value)}
-        placeholder="Tambah to-do baru..."
+        placeholder="Add new to-do item..."
         value={title}
       />
       <button
@@ -47,7 +47,7 @@ export function TodoForm({
         disabled={isSubmitting}
         type="submit"
       >
-        {isSubmitting ? "..." : "Tambah"}
+        {isSubmitting ? "..." : "Submit"}
       </button>
       {(clientError || submitError) && (
         <p className="text-sm text-red-700">{clientError ?? submitError}</p>

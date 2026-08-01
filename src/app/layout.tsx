@@ -8,11 +8,11 @@ import "./globals.css";
 
 export const metadata: Metadata = {
   title: {
-    default: "OTI Dashboard",
-    template: "%s | OTI Dashboard",
+    default: "Artist's Commissions & Productivity Manager",
+    template: "%s | Artist's Commissions & Productivity Manager",
   },
 
-  description: "Personal Productivity Dashboard.",
+  description: "A Personal Productivity Manager.",
 };
 
 type RootLayoutProps = Readonly<{
@@ -22,7 +22,7 @@ type RootLayoutProps = Readonly<{
 export default function RootLayout({ children }: RootLayoutProps) {
   return (
     <ClerkProvider>
-      <html lang="id">
+      <html lang="en">
         <body>
           <Navbar />
           {children}

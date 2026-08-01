@@ -8,7 +8,7 @@ import { TodoItem } from "@/components/to-do-list/ToDoItem";
 
 function getErrorMessage(error: unknown) {
   if (error instanceof Error) return error.message;
-  return "Terjadi kesalahan yang tidak diketahui.";
+  return "An unknown error occurred.";
 }
 
 export function TodosClient() {
@@ -92,11 +92,11 @@ export function TodosClient() {
       />
 
       {isLoading ? (
-        <p className="text-sm text-slate-500">Memuat to-do...</p>
+        <p className="text-sm text-slate-500">Creating a to-do list...</p>
       ) : loadError ? (
         <p className="text-sm text-red-700">{loadError}</p>
       ) : todos.length === 0 ? (
-        <p className="text-sm text-slate-500">Belum ada to-do.</p>
+        <p className="text-sm text-slate-500">No to-do items yet.</p>
       ) : (
         <ul className="grid gap-3">
           {todos.map((todo) => (

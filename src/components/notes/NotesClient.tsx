@@ -10,7 +10,7 @@ function getErrorMessage(error: unknown) {
   if (error instanceof Error) {
     return error.message;
   }
-  return "Terjadi kesalahan yang tidak diketahui.";
+  return "An unknown error occurred.";
 }
 
 export function NotesClient() {
@@ -51,13 +51,11 @@ export function NotesClient() {
 
     void fetchNotes();
 
-    // Cleanup function untuk mencegah state update jika komponen di-unmount
     return () => {
       isMounted = false;
     };
-  }, [reloadTrigger]); // Effect akan berjalan ulang jika reloadTrigger berubah
+  }, [reloadTrigger]);
 
-  // Fungsi untuk tombol "Coba Lagi"
   function handleRetry() {
     setReloadTrigger((prev) => prev + 1);
   }
@@ -104,7 +102,9 @@ export function NotesClient() {
   }
 
   async function handleDelete(id: string) {
-    const confirmed = window.confirm("Yakin ingin menghapus note ini?");
+    const confirmed = window.confirm(
+      "Are you sure that you want to remove this commission?",
+    );
     if (!confirmed) {
       return;
     }
@@ -140,16 +140,16 @@ export function NotesClient() {
         <div className="flex items-center justify-between gap-4">
           <div>
             <h2 className="text-xl font-semibold text-slate-950">
-              Daftar Notes
+              List of Commissions
             </h2>
             <p className="mt-1 text-sm text-slate-500">
-              Data diambil dari PostgreSQL.
+              All datas are taken from PostgreSQL
             </p>
           </div>
 
           {!isLoading && !loadError && (
             <span className="rounded-full bg-blue-50 px-3 py-1 text-sm font-semibold text-blue-700">
-              {notes.length} notes
+              {notes.length} commissions
             </span>
           )}
         </div>
@@ -165,28 +165,32 @@ export function NotesClient() {
 
         {isLoading ? (
           <div className="mt-4 rounded-2xl border border-slate-200 bg-white p-8 text-center shadow-sm">
-            <p className="font-medium text-slate-700">Memuat notes...</p>
+            <p className="font-medium text-slate-700">Loading Commission...</p>
             <p className="mt-2 text-sm text-slate-500">
-              Mengambil data dari API.
+              Fetching data from the API.
             </p>
           </div>
         ) : loadError ? (
           <div className="mt-4 rounded-2xl border border-red-200 bg-red-50 p-6">
-            <h3 className="font-semibold text-red-800">Notes gagal dimuat</h3>
+            <h3 className="font-semibold text-red-800">
+              Commission failed to load.
+            </h3>
             <p className="mt-2 text-sm text-red-700">{loadError}</p>
             <button
               className="mt-4 rounded-lg bg-red-700 px-4 py-2 text-sm font-semibold text-white"
               onClick={handleRetry} // Gunakan handleRetry di sini
               type="button"
             >
-              Coba Lagi
+              Try Again
             </button>
           </div>
         ) : notes.length === 0 ? (
           <div className="mt-4 rounded-2xl border-2 border-dashed border-slate-300 bg-white p-8 text-center">
-            <h3 className="font-semibold text-slate-900">Belum ada notes</h3>
+            <h3 className="font-semibold text-slate-900">
+              No commissions yet.
+            </h3>
             <p className="mt-2 text-sm text-slate-500">
-              Gunakan form untuk membuat note pertama.
+              Use the form to create your first commission.
             </p>
           </div>
         ) : (

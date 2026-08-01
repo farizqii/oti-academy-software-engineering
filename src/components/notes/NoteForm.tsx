@@ -31,7 +31,7 @@ export function NoteForm({
     setClientError(null);
 
     if (!title.trim()) {
-      setClientError("Judul tidak boleh kosong.");
+      setClientError("Title cannot be blank.");
 
       return;
     }
@@ -47,9 +47,9 @@ export function NoteForm({
     }
   }
 
-  const formTitle = editingNote ? "Edit Note" : "Tambah Note";
+  const formTitle = editingNote ? "Edit Commission" : "Add Commission";
 
-  const submitLabel = editingNote ? "Simpan Perubahan" : "Tambah Note";
+  const submitLabel = editingNote ? "Save Changes" : "Add Commission";
 
   return (
     <form
@@ -70,7 +70,7 @@ export function NoteForm({
             disabled={isSubmitting}
             maxLength={100}
             onChange={(event) => setTitle(event.target.value)}
-            placeholder="Contoh: Belajar CRUD"
+            placeholder="Example: Art Commission from Damar"
             value={title}
           />
         </label>
@@ -82,7 +82,7 @@ export function NoteForm({
             disabled={isSubmitting}
             maxLength={1000}
             onChange={(event) => setContent(event.target.value)}
-            placeholder="Tuliskan isi note"
+            placeholder="Write the content of the commission."
             rows={6}
             value={content}
           />
@@ -103,7 +103,7 @@ export function NoteForm({
             disabled={isSubmitting}
             type="submit"
           >
-            {isSubmitting ? "Menyimpan..." : submitLabel}
+            {isSubmitting ? "Saving..." : submitLabel}
           </button>
 
           {editingNote && (
@@ -113,7 +113,7 @@ export function NoteForm({
               onClick={onCancelEdit}
               type="button"
             >
-              Batal
+              Cancel
             </button>
           )}
         </div>

@@ -13,7 +13,7 @@ const navigation = [
   },
   {
     href: "/notes",
-    label: "Notes",
+    label: "My Commissions",
   },
   {
     href: "/to-do-list",
@@ -26,7 +26,7 @@ export function Navbar() {
     <nav className="border-b border-slate-200 bg-white">
       <div className="mx-auto flex max-w-5xl flex-col gap-4 px-4 py-4 sm:flex-row sm:items-center sm:justify-between">
         <Link className="text-lg font-bold text-slate-950" href="/">
-          OTI Dashboard
+          OmahTI Academy Final Project
         </Link>
 
         <div className="flex flex-wrap items-center gap-4">
