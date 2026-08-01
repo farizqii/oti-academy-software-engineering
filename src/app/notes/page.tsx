@@ -14,7 +14,7 @@ export default async function NotesPage() {
   }
 
   return (
-    <main className="min-h-[calc(100vh-129px)] bg-slate-50">
+    <main className="min-h-screen bg-slate-50">
       <section className="mx-auto max-w-5xl px-4 py-10">
         <p className="text-sm font-semibold text-blue-700">
           User-Owned Commissions
