@@ -2,17 +2,17 @@
 
 ## Deskripsi
 
-Aplikasi web untuk membantu user mencatat Notes dan
+Aplikasi web untuk membantu art freelancer mencatat komisi dan
 mengelola aktivitas produktivitas secara personal.
 
 ## Problem
 
-Catatan dan aktivitas produktivitas sering tersebar di
-beberapa tempat sehingga sulit dipantau.
+Banyak Artist berada dalam kesulitan untuk memantau banyaknya
+komisi dari request berbagai klien.
 
 ## Target User
 
-Siswa atau individu yang ingin mengelola catatan dan
+Freelance Artist atau individu yang ingin mengelola komisi dan
 aktivitas produktivitas dalam satu dashboard.
 
 ## Fitur
@@ -59,8 +59,11 @@ CLERK_SECRET_KEY
 /
  /dashboard
  /notes
+ /todolist
  /api/notes
  /api/notes/:id
+ /api.todo
+ /api.todo/:id
 
 ## Deployment
 
@@ -68,9 +71,10 @@ https://oti-academy-software-engineering-mu.vercel.app/
 
 ## Screenshots
 
-<img width="1904" height="948" alt="image" src="https://github.com/user-attachments/assets/0d449b2f-0035-4882-9304-a60684a5baba" />
-<img width="1905" height="946" alt="image" src="https://github.com/user-attachments/assets/cd328d99-34d7-48c6-9932-442fc2fa0406" />
-<img width="1907" height="949" alt="image" src="https://github.com/user-attachments/assets/21ca77ef-be32-45b1-9f6c-49d0150fc42f" />
+<img width="1905" height="946" alt="image" src="https://github.com/user-attachments/assets/65ab627f-4233-4e05-9618-ab08dc41245e" />
+<img width="1905" height="944" alt="image" src="https://github.com/user-attachments/assets/06efafee-d27e-4863-b824-3a0754eb2466" />
+<img width="1906" height="945" alt="image" src="https://github.com/user-attachments/assets/47f9e8f9-6490-47f9-b1dc-4ccd44f69cb2" />
+<img width="1905" height="943" alt="image" src="https://github.com/user-attachments/assets/231d1a5d-e90d-4565-8be2-1fa2822eb71b" />
 
 ## Author
 
